@@ -34,3 +34,9 @@ This checklist outlines the necessary steps to take before, during, and after tr
 - [ ] forms work
 - [ ] Calendly works
 - [ ] monitor for 48 hours
+
+## Related Migration Checklists
+
+* [Launch Migration Checklist](./LAUNCH_MIGRATION_CHECKLIST.md)
+* [Redirect QA Checklist](./REDIRECT_QA_CHECKLIST.md)
+* [WordPress Migration Inventory](./WORDPRESS_MIGRATION_INVENTORY.md)

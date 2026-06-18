@@ -78,3 +78,11 @@ This document outlines the principles and standards for Search Engine Optimizati
 - [ ] Schema validates using standard testing tools.
 - [ ] Policy pages are reachable via the footer.
 - [ ] Metadata is complete for all new routes.
+
+## Migration Resources
+
+For managing redirects and tracking SEO impacts during the WordPress migration, refer to:
+* [WordPress Migration Inventory](./WORDPRESS_MIGRATION_INVENTORY.md)
+* [Blog Migration Pending](./BLOG_MIGRATION_PENDING.md)
+* [Redirect QA Checklist](./REDIRECT_QA_CHECKLIST.md)
+* [URL Migration Tracker Template](./templates/url-migration-tracker.csv)
