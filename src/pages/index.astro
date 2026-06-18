@@ -11,8 +11,19 @@ import ProcessTimeline from "../components/sections/ProcessTimeline.astro";
 import CaseStudyPreviewGrid from "../components/sections/CaseStudyPreviewGrid.astro";
 import FinalCTA from "../components/sections/FinalCTA.astro";
 import { process } from '../data/process';
+import { organizationSchema, websiteSchema, professionalServiceSchema } from '../lib/schema';
+
+const jsonLd = [
+  organizationSchema(),
+  websiteSchema(),
+  professionalServiceSchema()
+];
 ---
-<Layout title="Custom eLearning, Kajabi, and LMS Solutions" description="TheEduAssist helps coaches, businesses, training teams, and educational organizations turn content into engaging online learning experiences.">
+<Layout
+  title="Custom eLearning, Kajabi, and LMS Solutions"
+  description="TheEduAssist helps coaches, businesses, training teams, and educational organizations turn content into engaging online learning experiences."
+  jsonLd={jsonLd}
+>
 
   <HomeHero
     title="Custom eLearning, Kajabi, and LMS Solutions Built to Launch Faster"

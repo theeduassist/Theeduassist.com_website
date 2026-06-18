@@ -18,8 +18,28 @@ const auditFaqs = [
     answer: "No, it's a working session. We will look at your current setup, answer your questions, and give you actionable advice. If you want our help implementing the advice, we will provide a proposal afterward."
   }
 ];
+
+import { webPageSchema, faqPageSchema, breadcrumbSchema } from '../../lib/schema';
+
+const jsonLd = [
+  webPageSchema(
+    "Book Free Audit",
+    "Book a free audit with TheEduAssist to review your course structure, platform setup, and launch strategy.",
+    "/book-free-audit/"
+  ),
+  faqPageSchema(auditFaqs),
+  breadcrumbSchema([
+    { name: "Home", urlPath: "/" },
+    { name: "Book Free Audit", urlPath: "/book-free-audit/" }
+  ])
+];
 ---
-<Layout title="Book Free Audit" description="Book a free audit with TheEduAssist to review your course structure, platform setup, and launch strategy.">
+<Layout
+  title="Book Free Audit"
+  description="Book a free audit with TheEduAssist to review your course structure, platform setup, and launch strategy."
+  canonicalPath="/book-free-audit/"
+  jsonLd={jsonLd}
+>
 
   <section class="py-20 md:py-28 bg-slate-900 text-white text-center px-4 relative overflow-hidden">
     <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500 to-transparent"></div>

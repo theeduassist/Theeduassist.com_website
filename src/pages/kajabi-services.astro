@@ -10,8 +10,27 @@ import Card from "../components/ui/Card.astro";
 import { kajabiServices } from '../data/kajabiServices';
 import { kajabiProcess } from '../data/process';
 import { faqs } from '../data/faqs';
+import { serviceSchema, faqPageSchema, breadcrumbSchema } from '../lib/schema';
+
+const jsonLd = [
+  serviceSchema(
+    "Kajabi Services",
+    "Kajabi course setup, website design, migration, upload, funnels, automations, and support for Kajabi platforms.",
+    "/kajabi-services/"
+  ),
+  faqPageSchema(faqs.kajabi),
+  breadcrumbSchema([
+    { name: "Home", urlPath: "/" },
+    { name: "Kajabi Services", urlPath: "/kajabi-services/" }
+  ])
+];
 ---
-<Layout title="Kajabi Services" description="Kajabi Services for Course Creators, Coaches, and Training Teams. TheEduAssist helps you build a cleaner Kajabi system.">
+<Layout
+  title="Kajabi Services"
+  description="Kajabi Services for Course Creators, Coaches, and Training Teams. TheEduAssist helps you build a cleaner Kajabi system."
+  canonicalPath="/kajabi-services/"
+  jsonLd={jsonLd}
+>
 
   <HomeHero
     title="Kajabi Services for Course Creators, Coaches, and Training Teams"

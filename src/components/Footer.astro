@@ -19,6 +19,14 @@ import { navigation } from '../data/navigation';
             </ul>
         </div>
         <div>
+            <h3 class="text-white font-bold mb-4">Legal & Trust</h3>
+            <ul class="space-y-2">
+                {navigation.footerLegalLinks.map((item) => (
+                    <li><a href={item.href} class="hover:text-white">{item.label}</a></li>
+                ))}
+            </ul>
+        </div>
+        <div>
             <h3 class="text-white font-bold mb-4">Ready to improve your eLearning?</h3>
             <a href="/book-free-audit/" class="inline-block bg-blue-600 text-white px-5 py-2 rounded-md font-medium hover:bg-blue-700">Book Free Audit</a>
         </div>

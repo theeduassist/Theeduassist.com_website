@@ -1,28 +1,69 @@
 ---
 interface Props {
-	title: string;
-	description: string;
+	title?: string;
+	description?: string;
+    canonicalPath?: string;
+    ogTitle?: string;
+    ogDescription?: string;
+    ogImage?: string;
+    noindex?: boolean;
+    type?: string;
+    jsonLd?: any[];
 }
 
-const { title, description } = Astro.props;
+const {
+    title,
+    description,
+    canonicalPath,
+    ogTitle,
+    ogDescription,
+    ogImage,
+    noindex = false,
+    type = 'website',
+    jsonLd = []
+} = Astro.props;
+
 import { site } from '../data/site';
+import { buildCanonicalUrl, formatTitle, formatDescription } from '../lib/seo';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+
+const formattedTitle = formatTitle(title);
+const formattedDescription = formatDescription(description);
+const canonicalUrl = canonicalPath ? buildCanonicalUrl(canonicalPath) : buildCanonicalUrl(Astro.url.pathname);
+const finalOgTitle = ogTitle || formattedTitle;
+const finalOgDescription = ogDescription || formattedDescription;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
+		<meta name="description" content={formattedDescription} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title} | TheEduAssist</title>
-        <link rel="canonical" href={new URL(Astro.url.pathname, site.url)} />
-        <meta property="og:title" content={`${title} | TheEduAssist`} />
-        <meta property="og:description" content={description} />
+		<title>{formattedTitle}</title>
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:title" content={finalOgTitle} />
+        <meta property="og:description" content={finalOgDescription} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content={type} />
+        <meta property="og:site_name" content={site.name} />
+        {ogImage && <meta property="og:image" content={ogImage} />}
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={finalOgTitle} />
+        <meta name="twitter:description" content={finalOgDescription} />
+        {ogImage && <meta name="twitter:image" content={ogImage} />}
+
+        {noindex && <meta name="robots" content="noindex, nofollow" />}
+        {!noindex && <meta name="robots" content="index, follow" />}
+
+        {jsonLd && jsonLd.length > 0 && jsonLd.map((schema) => (
+            <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+        ))}
 	</head>
 	<body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col">
         <Header />
