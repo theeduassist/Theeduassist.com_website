@@ -58,3 +58,8 @@ Immediately after switching the nameservers to Cloudflare, repeat the tests:
 
 ## Important warning:
 Website migration and email migration are separate projects. Do not migrate email during website launch.
+
+## Related Migration Documentation
+
+* [Launch Migration Checklist](./LAUNCH_MIGRATION_CHECKLIST.md)
+* [WordPress Migration Inventory](./WORDPRESS_MIGRATION_INVENTORY.md)
