@@ -3,8 +3,22 @@ import Layout from "../../layouts/Layout.astro";
 import HomeHero from "../../components/sections/HomeHero.astro";
 import ServiceCategoryTabs from "../../components/sections/ServiceCategoryTabs.astro";
 import FinalCTA from "../../components/sections/FinalCTA.astro";
+import { professionalServiceSchema, breadcrumbSchema } from '../../lib/schema';
+
+const jsonLd = [
+  professionalServiceSchema(),
+  breadcrumbSchema([
+    { name: "Home", urlPath: "/" },
+    { name: "Services", urlPath: "/services/" }
+  ])
+];
 ---
-<Layout title="Services Overview" description="Explore TheEduAssist's core services, organized by course design, platforms, engagement, and content support.">
+<Layout
+  title="Services Overview"
+  description="Explore TheEduAssist's core services, organized by course design, platforms, engagement, and content support."
+  canonicalPath="/services/"
+  jsonLd={jsonLd}
+>
 
   <HomeHero
     title="Our Services"

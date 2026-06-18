@@ -2,8 +2,26 @@
 import Layout from "../../layouts/Layout.astro";
 import HomeHero from "../../components/sections/HomeHero.astro";
 import CalendlySoftCTA from "../../components/sections/CalendlySoftCTA.astro";
+import { webPageSchema, breadcrumbSchema } from '../../lib/schema';
+
+const jsonLd = [
+  webPageSchema(
+    "Contact Us",
+    "Get in touch with TheEduAssist for custom eLearning and LMS solutions.",
+    "/contact/"
+  ),
+  breadcrumbSchema([
+    { name: "Home", urlPath: "/" },
+    { name: "Contact", urlPath: "/contact/" }
+  ])
+];
 ---
-<Layout title="Contact Us" description="Get in touch with TheEduAssist for custom eLearning and LMS solutions.">
+<Layout
+  title="Contact Us"
+  description="Get in touch with TheEduAssist for custom eLearning and LMS solutions."
+  canonicalPath="/contact/"
+  jsonLd={jsonLd}
+>
 
   <HomeHero
     title="Contact TheEduAssist"

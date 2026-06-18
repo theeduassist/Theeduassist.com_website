@@ -15,8 +15,15 @@ export const navigation = {
     { label: 'About', href: '/about/' },
     { label: 'Contact', href: '/contact/' },
     { label: 'Blog', href: '/blog/' },
-    { label: 'Careers', href: '/careers/' },
+    { label: 'Careers', href: '/careers/' }
+  ],
+  footerLegalLinks: [
     { label: 'Privacy Policy', href: '/privacy-policy/' },
     { label: 'Terms & Conditions', href: '/terms-and-conditions/' },
+    { label: 'Disclaimer', href: '/disclaimer/' },
+    { label: 'Editorial Policy', href: '/editorial-policy/' },
+    { label: 'AI Use Policy', href: '/ai-use-policy/' },
+    { label: 'Accessibility Statement', href: '/accessibility-statement/' },
+    { label: 'Cookie Policy', href: '/cookie-policy/' }
   ]
 };
