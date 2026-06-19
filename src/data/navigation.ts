@@ -1,13 +1,13 @@
+
 export const navigation = {
   header: [
     { label: 'Home', href: '/' },
-    { label: 'Services', href: '/services/' },
-    { label: 'LMS Solutions', href: '/services/lms-implementation-migration/' },
     { label: 'Kajabi Services', href: '/kajabi-services/' },
     { label: 'Blog', href: '/blog/' },
     { label: 'Case Studies', href: '/case-studies/' },
-    { label: 'About Us', href: '/about/' },
+    { label: 'Services', href: '/services/' },
     { label: 'Contact Us', href: '/contact/' },
+    { label: 'About Us', href: '/about/' },
   ],
   footerCompanyLinks: [
     { label: 'Home', href: '/' },

@@ -1,23 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
-    <circle cx="250" cy="250" r="240" fill="#77BA55" stroke="#FFFFFF" stroke-width="4" />
-    <circle cx="250" cy="250" r="180" fill="#27496D" stroke="#FFFFFF" stroke-width="4" />
-
-    <!-- Open Book -->
-    <path d="M 210 380 Q 230 370 250 380 Q 270 370 290 380 L 290 400 Q 270 390 250 400 Q 230 390 210 400 Z" fill="#FFFFFF" />
-    <!-- Desktop monitor -->
-    <rect x="190" y="290" width="120" height="80" rx="5" ry="5" fill="none" stroke="#FFFFFF" stroke-width="4" />
-    <path d="M 220 370 L 280 370" stroke="#FFFFFF" stroke-width="4" />
-    <!-- Graduation cap -->
-    <path d="M 210 330 L 250 315 L 290 330 L 250 345 Z" fill="#FFFFFF" />
-    <!-- Wi-Fi -->
-    <path d="M 230 270 Q 250 260 270 270" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
-    <path d="M 220 260 Q 250 245 280 260" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
-    <circle cx="250" cy="280" r="4" fill="#FFFFFF" />
-    <!-- Dotted line and nodes -->
-    <line x1="250" y1="240" x2="250" y2="150" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="4,4" />
-    <circle cx="250" cy="150" r="10" fill="#FFFFFF" />
-    <line x1="250" y1="150" x2="200" y2="120" stroke="#FFFFFF" stroke-width="2" />
-    <circle cx="200" cy="120" r="6" fill="#FFFFFF" />
-    <line x1="250" y1="150" x2="300" y2="120" stroke="#FFFFFF" stroke-width="2" />
-    <circle cx="300" cy="120" r="6" fill="#FFFFFF" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <g transform="translate(10, 10)">
+    <!-- Outer ring / accent green -->
+    <circle cx="40" cy="40" r="35" fill="none" stroke="#77BA55" stroke-width="8"/>
+    <!-- Inner circle / main blue -->
+    <circle cx="40" cy="40" r="25" fill="#27496D"/>
+    <!-- Text and icons / white -->
+    <text x="40" y="47" font-family="system-ui, sans-serif" font-size="20" font-weight="bold" fill="#FFFFFF" text-anchor="middle">EA</text>
+  </g>
 </svg>

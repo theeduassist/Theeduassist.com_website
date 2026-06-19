@@ -4,8 +4,6 @@ import service from './documents/service'
 import kajabiService from './documents/kajabiService'
 import caseStudy from './documents/caseStudy'
 import blogPost from './documents/blogPost'
-import category from './documents/category'
-import tag from './documents/tag'
 import author from './documents/author'
 import faq from './documents/faq'
 import platform from './documents/platform'
@@ -28,8 +26,6 @@ export const schemaTypes = [
   kajabiService,
   caseStudy,
   blogPost,
-  category,
-  tag,
   author,
   faq,
   platform,
