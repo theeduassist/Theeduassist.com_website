@@ -1,5 +1,6 @@
 ---
 import { getSiteSettings, getAllPages } from '../sanity/queries';
+import MobileMenu from './MobileMenu.astro';
 
 const siteSettings = await getSiteSettings();
 const site = siteSettings || { name: 'TheEduAssist', email: 'Info@theeduassist.com', social: {} };
@@ -44,13 +45,13 @@ const navigation = pages && pages.length > 0 ? {
             <img src="/brand/theeduassist-logo-wordmark.svg" alt="TheEduAssist e-learning design agency logo" class="h-10 w-auto" />
         </a>
         <nav class="hidden md:flex space-x-6 items-center">
-            {navigation.header.map((item) => (
+            {(Array.isArray(navigation?.header) ? navigation.header : []).map((item) => (
                 <a href={item.href} class="text-brand-textMuted hover:text-brand-primary font-medium transition-colors focus-ring px-2 py-1">{item.label}</a>
             ))}
         </nav>
         <div class="hidden md:flex">
             <a href="/book-free-audit/" class="bg-brand-accent text-white px-5 py-2 rounded-md font-medium hover:bg-brand-navy hover-lift focus-ring">Book Free Audit</a>
         </div>
-        <MobileMenu />
+        <MobileMenu navigation={navigation} />
     </div>
 </header>
