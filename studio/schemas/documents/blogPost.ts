@@ -22,10 +22,25 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'oldWordPressUrl',
+      title: 'Old WordPress URL',
+      type: 'url',
+    }),
+    defineField({
       name: 'excerpt',
       title: 'Excerpt',
       type: 'text',
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'body',
+      title: 'Body',
+      type: 'portableText',
+    }),
+    defineField({
+      name: 'featuredImage',
+      title: 'Featured Image',
+      type: 'imageWithAlt',
     }),
     defineField({
       name: 'author',
@@ -36,18 +51,14 @@ export default defineType({
     defineField({
       name: 'category',
       title: 'Category',
-      type: 'string',
+      type: 'reference',
+      to: [{type: 'category'}],
     }),
     defineField({
       name: 'tags',
       title: 'Tags',
       type: 'array',
-      of: [{type: 'string'}],
-    }),
-    defineField({
-      name: 'featuredImage',
-      title: 'Featured Image',
-      type: 'imageWithAlt',
+      of: [{type: 'reference', to: [{type: 'tag'}]}],
     }),
     defineField({
       name: 'publishedAt',
@@ -60,36 +71,19 @@ export default defineType({
       type: 'datetime',
     }),
     defineField({
-      name: 'body',
-      title: 'Body',
-      type: 'portableText',
+      name: 'seoTitle',
+      title: 'SEO Title',
+      type: 'string',
     }),
     defineField({
-      name: 'faqs',
-      title: 'FAQs',
-      type: 'array',
-      of: [{type: 'faqItem'}],
+      name: 'seoDescription',
+      title: 'SEO Description',
+      type: 'text',
     }),
     defineField({
-      name: 'relatedServices',
-      title: 'Related Services',
-      type: 'array',
-      of: [{type: 'reference', to: [{type: 'service'}, {type: 'kajabiService'}]}],
-    }),
-    defineField({
-      name: 'cta',
-      title: 'Call to Action',
-      type: 'cta',
-    }),
-    defineField({
-      name: 'seo',
-      title: 'SEO Fields',
-      type: 'seoFields',
-    }),
-    defineField({
-      name: 'migrationSourceUrl',
-      title: 'Migration Source URL',
-      type: 'url',
+      name: 'canonicalPath',
+      title: 'Canonical Path',
+      type: 'string',
     }),
     defineField({
       name: 'migrationStatus',
@@ -104,6 +98,35 @@ export default defineType({
         ],
       },
       initialValue: 'pending',
+    }),
+    defineField({
+      name: 'redirectStatus',
+      title: 'Redirect Status',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'None', value: 'none'},
+          {title: 'Redirect Created', value: 'redirectCreated'},
+        ],
+      },
+      initialValue: 'none',
+    }),
+    defineField({
+      name: 'oldInternalLinksReviewed',
+      title: 'Old Internal Links Reviewed',
+      type: 'boolean',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'mediaReviewed',
+      title: 'Media Reviewed',
+      type: 'boolean',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'notes',
+      title: 'Notes',
+      type: 'text',
     }),
   ],
 })
