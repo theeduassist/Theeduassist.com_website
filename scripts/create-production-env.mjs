@@ -24,10 +24,10 @@ const fallbacks = {
   PUBLIC_FIREBASE_STORAGE_BUCKET: 'theeduassist-website-prod.appspot.com',
   PUBLIC_SITE_URL: 'https://theeduassist.com',
   PUBLIC_DEMO_SITE_URL: 'https://theeduassist-website-prod.web.app',
-  PUBLIC_FIREBASE_API_KEY: '',
-  PUBLIC_FIREBASE_APP_ID: '',
-  PUBLIC_FIREBASE_MESSAGING_SENDER_ID: '',
-  PUBLIC_FIREBASE_MEASUREMENT_ID: ''
+  PUBLIC_FIREBASE_API_KEY: 'mock-api-key',
+  PUBLIC_FIREBASE_APP_ID: 'mock-app-id',
+  PUBLIC_FIREBASE_MESSAGING_SENDER_ID: 'mock-sender-id',
+  PUBLIC_FIREBASE_MEASUREMENT_ID: 'mock-measurement-id'
 };
 
 const optionalPrivateVars = ['SANITY_VIEWER_TOKEN'];
