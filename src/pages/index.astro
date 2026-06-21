@@ -1,15 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import HomeHero from "../components/sections/HomeHero.astro";
-import ToolsPlatformSection from "../components/sections/ToolsPlatformSection.astro";
-import ChooseYourPath from "../components/sections/ChooseYourPath.astro";
-import HomeServicesGrid from "../components/sections/HomeServicesGrid.astro";
-import PlatformSystemInfographic from "../components/sections/PlatformSystemInfographic.astro";
-import KajabiSupportedPlatform from "../components/sections/KajabiSupportedPlatform.astro";
-import LearningWorkflow from "../components/sections/LearningWorkflow.astro";
-import HomeProofCards from "../components/sections/HomeProofCards.astro";
-import HomeBlogPreview from "../components/sections/HomeBlogPreview.astro";
-import HomeFinalCTA from "../components/sections/HomeFinalCTA.astro";
+import NewHomeHero from "../components/sections/NewHomeHero.astro";
+import WhoWeHelp from "../components/sections/WhoWeHelp.astro";
+import CoreServicesNew from "../components/sections/CoreServicesNew.astro";
+import AIAssistance from "../components/sections/AIAssistance.astro";
+import KajabiSpecialtyNew from "../components/sections/KajabiSpecialtyNew.astro";
+import ProcessTimelineNew from "../components/sections/ProcessTimelineNew.astro";
+import InfographicSystemNew from "../components/sections/InfographicSystemNew.astro";
+import WhyChooseUs from "../components/sections/WhyChooseUs.astro";
+import NewHomeFinalCTA from "../components/sections/NewHomeFinalCTA.astro";
 import { organizationSchema, websiteSchema, professionalServiceSchema } from '../lib/schema';
 
 const jsonLd = [
@@ -19,41 +18,34 @@ const jsonLd = [
 ];
 ---
 <Layout
-  title="Custom eLearning, Kajabi, and LMS Solutions"
-  description="TheEduAssist helps coaches, businesses, training teams, and educational organizations turn content into engaging online learning experiences."
+  title="TheEduAssist | E-Learning Design Agency for Courses, Kajabi & LMS Builds"
+  description="TheEduAssist helps creators, coaches, educators, consultants, training companies, and businesses build online courses, Kajabi systems, LMS experiences, funnels, automations, and launch-ready e-learning content."
   jsonLd={jsonLd}
 >
 
-  <HomeHero
-    title="Design, Build, and Launch Better Online Learning Systems"
-    subtitle="TheEduAssist helps coaches, course creators, educators, and training teams turn content into structured learning experiences across LMS platforms, Kajabi, course websites, AI-supported workflows, and digital training systems."
-    heroBadge="Multi-Platform E-Learning Design Agency"
-    trustText="Course strategy, content flow, LMS setup, Kajabi builds, platform migration, automation, testing, and launch support."
-    primaryCtaLabel="Book Free Audit"
+  <NewHomeHero
+    title="Build a Launch-Ready Online Learning System From Your Expertise"
+    subtitle="TheEduAssist helps creators, coaches, educators, consultants, training companies, and online academies design courses, build Kajabi systems, migrate LMS content, create learning assets, and launch professional e-learning experiences."
+    primaryCtaLabel="Book a Free Course Audit"
     primaryCtaLink="/book-free-audit/"
     secondaryCtaLabel="Explore Services"
     secondaryCtaLink="/services/"
-    tertiaryCtaLabel="Explore Kajabi Services"
-    tertiaryCtaLink="/kajabi-services/"
-    showDashboardVisual={true}
   />
 
-  <ToolsPlatformSection />
+  <WhoWeHelp />
 
-  <ChooseYourPath />
+  <CoreServicesNew />
 
-  <HomeServicesGrid />
+  <AIAssistance />
 
-  <PlatformSystemInfographic />
+  <KajabiSpecialtyNew />
 
-  <LearningWorkflow />
+  <ProcessTimelineNew />
 
-  <KajabiSupportedPlatform />
+  <InfographicSystemNew />
 
-  <HomeProofCards />
+  <WhyChooseUs />
 
-  <HomeBlogPreview />
-
-  <HomeFinalCTA />
+  <NewHomeFinalCTA />
 
 </Layout>

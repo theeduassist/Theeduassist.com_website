@@ -8,29 +8,32 @@ const site = siteSettings || { name: 'TheEduAssist', email: 'Info@theeduassist.c
 const desktopNav = [
     { label: 'Home', href: '/' },
     { label: 'Services', href: '/services/' },
-    { label: 'LMS Solutions', href: '/services/lms-implementation-migration/' },
-    { label: 'Kajabi Services', href: '/kajabi-services/' },
-    { label: 'Blog', href: '/blog/' },
+    { label: 'Kajabi', href: '/kajabi-services/' },
+    { label: 'LMS Migration', href: '/services/lms-implementation-migration/' },
+    { label: 'AI Assistance', href: '/services/ai-assistance/' },
     { label: 'Case Studies', href: '/case-studies/' },
-    { label: 'About Us', href: '/about/' },
-    { label: 'Contact Us', href: '/contact/' },
+    { label: 'Blog', href: '/blog/' },
+    { label: 'Contact', href: '/contact/' },
 ];
 
 ---
-<header class="bg-white border-b border-brand-border relative z-50">
+<header class="bg-white border-b border-brand-border relative z-50 sticky top-0">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-        <a href="/" class="flex items-center space-x-2 focus-ring rounded-sm" aria-label="TheEduAssist Home">
-            <img src="/brand/theeduassist-logo-wordmark.svg" alt="TheEduAssist e-learning design agency logo" class="h-10 w-auto hidden sm:block" />
-            <div class="flex items-center sm:hidden">
-                <img src="/brand/theeduassist-logo-mark.svg" alt="TheEduAssist e-learning design agency logo" class="h-10 w-auto mr-2" />
-                <span class="font-bold text-brand-primary text-lg">TheEduAssist</span>
+        <a href="/" class="flex items-center space-x-3 focus-ring rounded-sm group" aria-label="TheEduAssist Home">
+            <img src="/brand/theeduassist-logo.svg" alt="TheEduAssist e-learning design agency logo" class="h-10 w-auto" />
+            <div class="hidden md:flex flex-col">
+                <span class="font-bold text-brand-primary text-xl leading-tight group-hover:text-brand-accent transition-colors">TheEduAssist</span>
+                <span class="text-xs text-brand-textMuted font-medium uppercase tracking-wider">E-Learning Design Agency</span>
             </div>
         </a>
-        <nav class="hidden lg:flex space-x-6 items-center">
+        <nav class="hidden lg:flex space-x-5 items-center">
             {desktopNav.map((item) => (
-                <a href={item.href} class="text-brand-textMuted hover:text-brand-primary font-medium focus-ring rounded-sm px-1 py-0.5 transition-colors">{item.label}</a>
+                <a href={item.href} class="text-brand-textMain hover:text-brand-primary hover:bg-brand-softBg hover:underline underline-offset-4 decoration-brand-accent/30 font-medium focus-ring rounded-md px-2 py-1 transition-all">{item.label}</a>
             ))}
-            <a href="/book-free-audit/" class="bg-brand-primary text-white px-5 py-2 rounded-md font-medium hover-lift click-press focus-ring transition-colors">Book Free Audit</a>
+            <div class="flex items-center space-x-3 ml-2 border-l border-brand-border pl-5">
+                <a href="/services/" class="text-brand-primary font-medium hover:text-brand-accent focus-ring rounded-sm px-2 py-1 transition-colors">View Services</a>
+                <a href="/book-free-audit/" class="bg-brand-primary text-white px-5 py-2 rounded-md font-medium hover-lift click-press focus-ring transition-colors hover:bg-brand-navy shadow-sm">Book Free Audit</a>
+            </div>
         </nav>
         <div class="lg:hidden flex items-center">
             <MobileMenu />
