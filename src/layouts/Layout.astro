@@ -27,6 +27,9 @@ import { buildCanonicalUrl, formatTitle, formatDescription } from '../lib/seo';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import AIQuickAssistBar from '../components/ai/AIQuickAssistBar.astro';
+import AIFloatingWidget from '../components/ai/AIFloatingWidget.astro';
+import AIAssistToast from '../components/ai/AIAssistToast.astro';
 
 const siteSettings = await getSiteSettings();
 const site = siteSettings || { title: 'TheEduAssist', name: 'TheEduAssist' };
@@ -67,11 +70,14 @@ const finalOgDescription = ogDescription || formattedDescription;
             <script type="application/ld+json" set:html={JSON.stringify(schema)} />
         ))}
 	</head>
-	<body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col">
+		<body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col">
+        <AIQuickAssistBar />
         <Header />
         <main class="flex-grow">
 		    <slot />
         </main>
         <Footer />
+        <AIFloatingWidget />
+        <AIAssistToast />
 	</body>
 </html>
