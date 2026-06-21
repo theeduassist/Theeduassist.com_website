@@ -1,4 +1,5 @@
 ---
+import AIFooterStrip from './ai/AIFooterStrip.astro';
 import { getSiteSettings } from '../sanity/queries';
 
 const siteSettings = await getSiteSettings();
@@ -74,6 +75,7 @@ const navigation = {
             <a href="/book-free-audit/" class="block text-center bg-brand-accent text-brand-navy px-5 py-3 rounded-md font-bold hover-lift click-press focus-ring transition-colors hover:bg-white shadow-md">Book Free Audit</a>
         </div>
     </div>
+    <AIFooterStrip />
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 pt-8 border-t border-white/10 text-center text-sm text-slate-500">
         &copy; 2026, TheEduAssist. All rights reserved.
     </div>
