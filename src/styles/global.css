@@ -56,9 +56,12 @@
   .click-press:active {
     transform: scale(0.98);
   }
-  .focus-ring {
-    outline: 2px solid var(--color-brand-green);
-    outline-offset: 2px;
+  .focus-ring:focus-visible {
+    outline: 2px solid rgba(119, 186, 85, 0.75);
+    outline-offset: 3px;
+  }
+  .focus-ring:focus:not(:focus-visible) {
+    outline: none;
   }
   .animate-fade-up {
     animation: fadeUp 0.6s ease-out forwards;
