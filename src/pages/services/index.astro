@@ -1,8 +1,16 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import HomeHero from "../../components/sections/HomeHero.astro";
-import ServiceCategoryTabs from "../../components/sections/ServiceCategoryTabs.astro";
-import FinalCTA from "../../components/sections/FinalCTA.astro";
+import ServicesHero from "../../components/services/ServicesHero.astro";
+import ServiceFinder from "../../components/services/ServiceFinder.astro";
+import ServiceLifecycle from "../../components/services/ServiceLifecycle.astro";
+import ServicesGrid from "../../components/services/ServicesGrid.astro";
+import PlatformSpecialty from "../../components/services/PlatformSpecialty.astro";
+import KajabiServiceHighlight from "../../components/services/KajabiServiceHighlight.astro";
+import AIWorkflowSection from "../../components/services/AIWorkflowSection.astro";
+import ServicesComparison from "../../components/services/ServicesComparison.astro";
+import ServicesFAQ from "../../components/services/ServicesFAQ.astro";
+import ServicesFinalCTA from "../../components/services/ServicesFinalCTA.astro";
+
 import { professionalServiceSchema, breadcrumbSchema } from '../../lib/schema';
 
 const jsonLd = [
@@ -14,24 +22,21 @@ const jsonLd = [
 ];
 ---
 <Layout
-  title="Services Overview"
-  description="Explore TheEduAssist's core services, organized by course design, platforms, engagement, and content support."
+  title="TheEduAssist Services | Course Creation, Kajabi, LMS & E-Learning Builds"
+  description="Explore TheEduAssist services for course creation, curriculum design, Kajabi setup, LMS migration, instructional design, AI-powered e-learning support, funnels, automation, and launch-ready online learning systems."
   canonicalPath="/services/"
   jsonLd={jsonLd}
 >
 
-  <HomeHero
-    title="Our Services"
-    subtitle="We help organizations design, build, and migrate professional eLearning and training experiences. Explore our services below."
-    primaryCtaLabel="Book Free Audit"
-    primaryCtaLink="/book-free-audit/"
-  />
-
-  <ServiceCategoryTabs />
-
-  <FinalCTA
-    title="Not sure which service you need?"
-    subtitle="Book a free audit to discuss your goals and we'll help you find the right path."
-  />
+  <ServicesHero />
+  <ServiceFinder />
+  <ServiceLifecycle />
+  <ServicesGrid />
+  <PlatformSpecialty />
+  <KajabiServiceHighlight />
+  <AIWorkflowSection />
+  <ServicesComparison />
+  <ServicesFAQ />
+  <ServicesFinalCTA />
 
 </Layout>
