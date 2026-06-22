@@ -16,7 +16,7 @@ const mobileLinks = [
   <button
     id="mobile-menu-btn"
     type="button"
-    class="inline-flex items-center justify-center p-2 rounded-md text-brand-primary hover:text-brand-navy hover:bg-brand-softBg focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-accent transition-colors focus-ring"
+    class="inline-flex items-center justify-center p-2 rounded-md text-brand-primary hover:text-brand-navy hover:bg-brand-softBg focus:outline-none  transition-colors focus-ring"
     aria-controls="mobile-menu-panel"
     aria-expanded="false"
   >
@@ -41,7 +41,7 @@ const mobileLinks = [
       {mobileLinks.map((link) => (
         <a
           href={link.href}
-          class="block px-3 py-2 rounded-md text-base font-medium text-brand-textMain hover:text-brand-primary hover:bg-brand-softBg focus-ring mobile-link"
+          class="block px-3 py-2 rounded-md text-base font-medium text-brand-textMain hover:text-brand-accent hover:bg-brand-accent/10 focus-ring mobile-link"
           {...(link.external ? { target: '_blank', rel: 'noopener noreferrer', 'aria-label': link.label } : {})}
         >
           {link.label}
