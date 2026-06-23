@@ -1,0 +1,50 @@
+---
+import Button from '../ui/Button.astro';
+
+export interface Props {
+  title: string;
+  subtitle: string;
+  primaryCtaLabel: string;
+  primaryCtaLink: string;
+  secondaryCtaLabel: string;
+  secondaryCtaLink: string;
+  email: string;
+  trustChips: string[];
+}
+
+const {
+  title,
+  subtitle,
+  primaryCtaLabel,
+  primaryCtaLink,
+  secondaryCtaLabel,
+  secondaryCtaLink,
+  email,
+  trustChips
+} = Astro.props;
+---
+
+<section class="py-20 md:py-28 bg-[#27496D] text-white text-center px-4 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500 to-transparent"></div>
+  <div class="max-w-4xl mx-auto relative z-10">
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{title}</h1>
+    <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10">{subtitle}</p>
+
+    <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-10">
+      <Button href={primaryCtaLink} variant="primary" size="lg">{primaryCtaLabel}</Button>
+      <Button href={secondaryCtaLink} variant="outline" size="lg" class="bg-white/5 text-white border-white/20 hover:bg-white/10">{secondaryCtaLabel}</Button>
+    </div>
+
+    <p class="text-sm text-slate-400 mb-12">
+      Or email us directly at <a href={`mailto:${email}`} class="text-white hover:underline font-medium">{email}</a>
+    </p>
+
+    <div class="flex flex-wrap justify-center gap-2">
+      {trustChips.map((chip) => (
+        <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-medium text-blue-100">
+          {chip}
+        </span>
+      ))}
+    </div>
+  </div>
+</section>
