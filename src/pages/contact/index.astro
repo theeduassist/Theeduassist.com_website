@@ -1,15 +1,15 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import HomeHero from "../../components/sections/HomeHero.astro";
-import CalendlySoftCTA from "../../components/sections/CalendlySoftCTA.astro";
-import ContactForm from "../../components/forms/ContactForm.astro";
-import FormNotice from "../../components/forms/FormNotice.astro";
+import ContactHero from "../../components/contact/ContactHero.astro";
+import ContactOptions from "../../components/contact/ContactOptions.astro";
+import QuickContactForm from "../../components/forms/QuickContactForm.astro";
+import ContactFAQ from "../../components/contact/ContactFAQ.astro";
 import { webPageSchema, breadcrumbSchema } from '../../lib/schema';
 
 const jsonLd = [
   webPageSchema(
-    "Contact Us",
-    "Get in touch with TheEduAssist for custom eLearning and LMS solutions.",
+    "Contact TheEduAssist | E-Learning Design Agency",
+    "Contact TheEduAssist for online course creation, Kajabi setup, LMS migration, AI-powered e-learning support, content conversion, funnels, automation, and course launch support.",
     "/contact/"
   ),
   breadcrumbSchema([
@@ -17,43 +17,45 @@ const jsonLd = [
     { name: "Contact", urlPath: "/contact/" }
   ])
 ];
+
+const trustChips = [
+  "Course Creation",
+  "Kajabi Setup",
+  "LMS Migration",
+  "AI E-Learning Support",
+  "Content Conversion",
+  "Funnels & Automation"
+];
 ---
 <Layout
-  title="Contact Us"
-  description="Get in touch with TheEduAssist for custom eLearning and LMS solutions."
+  title="Contact TheEduAssist | E-Learning Design Agency"
+  description="Contact TheEduAssist for online course creation, Kajabi setup, LMS migration, AI-powered e-learning support, content conversion, funnels, automation, and course launch support."
   canonicalPath="/contact/"
   jsonLd={jsonLd}
 >
 
-  <HomeHero
+  <ContactHero
     title="Contact TheEduAssist"
-    subtitle="We're here to help structure, build, or migrate your learning content."
+    subtitle="Have a course idea, Kajabi setup, LMS migration, training content, or online learning system that needs structure? Contact TheEduAssist and we’ll help you find the right next step."
     primaryCtaLabel="Book Free Audit"
     primaryCtaLink="/book-free-audit/"
+    secondaryCtaLabel="Email Us"
+    secondaryCtaLink="mailto:Info@theeduassist.com"
+    email="Info@theeduassist.com"
+    trustChips={trustChips}
   />
+
+  <ContactOptions email="Info@theeduassist.com" />
 
   <section class="py-24 bg-white">
     <div class="max-w-3xl mx-auto px-4">
-      <div class="bg-slate-50 p-8 md:p-10 rounded-lg border border-slate-200 shadow-sm">
-        <h2 class="text-2xl font-bold mb-6 text-slate-900">Send us a message</h2>
-
-        <div class="mb-8 p-4 bg-blue-50 text-blue-800 rounded-md border border-blue-100 flex items-start">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-          </svg>
-          <div>
-            <p class="font-medium">Direct Email</p>
-            <p class="text-sm mt-1">You can reach us directly at <a href="mailto:info@theeduassist.com" class="font-bold underline hover:text-blue-600">info@theeduassist.com</a></p>
-          </div>
-        </div>
-
-        <FormNotice />
-
-        <ContactForm />
-
-        <CalendlySoftCTA />
+      <div class="bg-white p-8 md:p-10 rounded-xl border border-slate-200 shadow-sm">
+        <h2 class="text-3xl font-bold mb-8 text-slate-900 text-center">Send a Quick Message</h2>
+        <QuickContactForm />
       </div>
     </div>
   </section>
+
+  <ContactFAQ />
 
 </Layout>

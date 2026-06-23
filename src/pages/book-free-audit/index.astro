@@ -1,37 +1,45 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import FAQAccordion from "../../components/ui/FAQAccordion.astro";
-import { getCtaBlocks } from '../../sanity/queries';
-
-const ctaBlocks = (await getCtaBlocks()).reduce((acc, block) => {
-  acc[(block.title || 'default').toLowerCase().replace(/\s+/g, '-')] = block;
-  return acc;
-}, {} as any);
-import Card from "../../components/ui/Card.astro";
+import AuditHero from "../../components/audit/AuditHero.astro";
+import AuditReviewScope from "../../components/audit/AuditReviewScope.astro";
 import AuditRequestForm from "../../components/forms/AuditRequestForm.astro";
-import FormNotice from "../../components/forms/FormNotice.astro";
+import CalendlyCTA from "../../components/audit/CalendlyCTA.astro";
+import AuditNextSteps from "../../components/audit/AuditNextSteps.astro";
+import AuditFAQ from "../../components/audit/AuditFAQ.astro";
+import { webPageSchema, faqPageSchema, breadcrumbSchema } from '../../lib/schema';
 
+// Required FAQ array for the Schema
 const auditFaqs = [
   {
-    question: "Is this really free?",
-    answer: "Yes, the 30-minute audit call is completely free. We use this time to understand your goals and see if we are a good fit to help you."
+    question: "Is the audit really free?",
+    answer: "Yes. The audit request helps us understand your project and recommend the right next step. Full implementation work is quoted separately."
   },
   {
-    question: "Do I need to have my content ready?",
-    answer: "No, you don't need everything ready. Bring whatever you have—even if it's just an outline, some videos, or an old course. We can guide you on the next steps."
+    question: "Do I need to have course content ready?",
+    answer: "No. You can submit an idea, rough notes, existing content, Kajabi setup, LMS, or scattered files."
   },
   {
-    question: "Is this a sales pitch?",
-    answer: "No, it's a working session. We will look at your current setup, answer your questions, and give you actionable advice. If you want our help implementing the advice, we will provide a proposal afterward."
+    question: "Can you review my Kajabi setup?",
+    answer: "Yes. Kajabi is one of our strongest specialties."
+  },
+  {
+    question: "Can you review LMS or WordPress content?",
+    answer: "Yes. We can review LMS content, WordPress course pages, Google Drive folders, PDFs, videos, and other training materials."
+  },
+  {
+    question: "Will you give pricing?",
+    answer: "We can recommend a package or custom quote after reviewing your audit details. Pricing depends on scope, content volume, platform, timeline, and launch needs."
+  },
+  {
+    question: "Do you guarantee sales?",
+    answer: "No. We help improve structure, learning experience, platform setup, funnels, and launch readiness, but sales depend on offer, audience, traffic, pricing, trust, and other factors."
   }
 ];
 
-import { webPageSchema, faqPageSchema, breadcrumbSchema } from '../../lib/schema';
-
 const jsonLd = [
   webPageSchema(
-    "Book Free Audit",
-    "Book a free audit with TheEduAssist to review your course structure, platform setup, and launch strategy.",
+    "Book a Free Course Audit | TheEduAssist",
+    "Book a free audit with TheEduAssist to review your course idea, Kajabi setup, LMS, training content, AI-powered e-learning needs, funnels, automation, or launch workflow.",
     "/book-free-audit/"
   ),
   faqPageSchema(auditFaqs),
@@ -40,118 +48,49 @@ const jsonLd = [
     { name: "Book Free Audit", urlPath: "/book-free-audit/" }
   ])
 ];
+
+const trustChips = [
+  "Free Audit",
+  "Course Review",
+  "Kajabi Review",
+  "LMS Review",
+  "Content Review",
+  "Funnel Review",
+  "Launch Review"
+];
 ---
 <Layout
-  title="Book Free Audit"
-  description="Book a free audit with TheEduAssist to review your course structure, platform setup, and launch strategy."
+  title="Book a Free Course Audit | TheEduAssist"
+  description="Book a free audit with TheEduAssist to review your course idea, Kajabi setup, LMS, training content, AI-powered e-learning needs, funnels, automation, or launch workflow."
   canonicalPath="/book-free-audit/"
   jsonLd={jsonLd}
 >
 
-  <section class="py-20 md:py-28 bg-slate-900 text-white text-center px-4 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500 to-transparent"></div>
-    <div class="max-w-4xl mx-auto relative z-10">
-      <div class="inline-block px-3 py-1 bg-blue-900 text-blue-200 rounded-full text-sm font-bold mb-6 tracking-wide uppercase border border-blue-700">
-        No Obligation Call
-      </div>
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Book Your Free eLearning Audit</h1>
-      <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto">A professional, no-obligation review of your course, platform setup, or content structure.</p>
-    </div>
-  </section>
+  <AuditHero
+    title="Book a Free Course, Kajabi, or LMS Audit"
+    subtitle="Tell us what you are building, improving, migrating, or launching. TheEduAssist will review your course idea, content, Kajabi setup, LMS, funnel, or learning workflow and recommend the best next step."
+    primaryCtaLabel="Start Audit Form"
+    primaryCtaLink="#audit-form-section"
+    secondaryCtaLabel="Email Instead"
+    secondaryCtaLink="mailto:Info@theeduassist.com"
+    trustChips={trustChips}
+  />
 
-  <section class="py-24 bg-white">
-    <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-12">
-      <div class="lg:col-span-7 space-y-12">
-        <div>
-          <h2 class="text-3xl font-bold mb-6 text-slate-900 border-b border-slate-200 pb-4">What the audit covers</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="flex items-start">
-              <svg class="h-6 w-6 text-blue-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-              <span class="text-slate-700 font-medium">Kajabi setup review</span>
-            </div>
-            <div class="flex items-start">
-              <svg class="h-6 w-6 text-blue-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-              <span class="text-slate-700 font-medium">LMS migration readiness</span>
-            </div>
-            <div class="flex items-start">
-              <svg class="h-6 w-6 text-blue-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-              <span class="text-slate-700 font-medium">Course content structure</span>
-            </div>
-            <div class="flex items-start">
-              <svg class="h-6 w-6 text-blue-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-              <span class="text-slate-700 font-medium">Learner journey review</span>
-            </div>
-            <div class="flex items-start">
-              <svg class="h-6 w-6 text-blue-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-              <span class="text-slate-700 font-medium">Funnel and email flow</span>
-            </div>
-            <div class="flex items-start">
-              <svg class="h-6 w-6 text-blue-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-              <span class="text-slate-700 font-medium">Launch priorities</span>
-            </div>
-          </div>
-        </div>
+  <AuditReviewScope />
 
-        <div>
-          <h2 class="text-3xl font-bold mb-6 text-slate-900 border-b border-slate-200 pb-4">Who should book</h2>
-          <p class="text-lg text-slate-600 leading-relaxed">
-            Coaches, course creators, corporate training teams, and educational organizations who are actively looking to improve, migrate, or launch their digital learning programs in the near future.
-          </p>
-        </div>
-
-        <div>
-          <h2 class="text-3xl font-bold mb-6 text-slate-900 border-b border-slate-200 pb-4">What you will leave with</h2>
-          <ul class="space-y-4 text-slate-600">
-            <li class="flex items-start">
-              <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold mr-3 flex-shrink-0">1</div>
-              <span class="mt-1">A clear understanding of your technical launch roadmap.</span>
-            </li>
-            <li class="flex items-start">
-              <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold mr-3 flex-shrink-0">2</div>
-              <span class="mt-1">Actionable feedback on your current course or platform setup.</span>
-            </li>
-            <li class="flex items-start">
-              <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold mr-3 flex-shrink-0">3</div>
-              <span class="mt-1">A tailored proposal outlining how TheEduAssist can help you execute.</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="lg:col-span-5">
-        <div class="bg-slate-50 rounded-xl p-8 border border-slate-200 shadow-sm sticky top-8">
-          <h3 class="text-2xl font-bold mb-6 text-slate-900">Request Audit</h3>
-
-          <FormNotice />
-
-          <p class="text-sm text-slate-500 mb-6 italic">Note: The form backend will be connected in a future phase. For now, please book a 30-minute introductory call using the calendar below or email us directly at <a href="mailto:info@theeduassist.com" class="text-blue-600 hover:underline">info@theeduassist.com</a>.</p>
-
-          <a
-            href={ctaBlocks['calendly']?.ctas?.[0]?.url || '#'}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="block w-full bg-blue-600 text-white text-center px-6 py-4 rounded-md font-bold text-lg hover:bg-blue-700 transition-colors shadow-sm mb-6"
-          >
-            {ctaBlocks['calendly']?.ctas?.[0]?.label || 'Book a call'}
-          </a>
-
-          <div class="text-center text-sm text-slate-500">
-            <p>Or request an audit manually:</p>
-          </div>
-
-          <div class="mt-6 opacity-70">
-            <AuditRequestForm />
-          </div>
-        </div>
+  <section id="audit-form-section" class="py-24 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="bg-white p-8 md:p-10 rounded-xl border border-slate-200 shadow-sm">
+        <h2 class="text-3xl font-bold mb-8 text-center text-slate-900">Tell Us About Your Project</h2>
+        <AuditRequestForm />
       </div>
     </div>
   </section>
 
-  <section class="py-24 bg-slate-50 border-t border-slate-200">
-    <div class="max-w-3xl mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-10 text-center text-slate-900">Audit FAQs</h2>
-      <FAQAccordion items={auditFaqs} />
-    </div>
-  </section>
+  <CalendlyCTA />
+
+  <AuditNextSteps />
+
+  <AuditFAQ />
 
 </Layout>

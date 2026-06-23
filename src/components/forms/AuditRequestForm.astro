@@ -2,67 +2,209 @@
 import FormField from './FormField.astro';
 import TextAreaField from './TextAreaField.astro';
 import SelectField from './SelectField.astro';
+import MultiSelectField from './MultiSelectField.astro';
 import HiddenTrackingFields from './HiddenTrackingFields.astro';
-import TurnstileWidget from './TurnstileWidget.astro';
 
-const reviewOptions = [
-  { value: 'kajabi_setup', label: 'Kajabi setup' },
-  { value: 'lms_setup', label: 'LMS setup' },
-  { value: 'course_structure', label: 'Course structure' },
-  { value: 'course_upload', label: 'Course upload/content organization' },
-  { value: 'funnel_automation', label: 'Funnel and email automation' },
-  { value: 'learner_experience', label: 'Learner experience' },
-  { value: 'migration_readiness', label: 'Migration readiness' },
-  { value: 'launch_plan', label: 'Overall launch plan' },
+const roleOptions = [
+  { value: 'Creator', label: 'Creator' },
+  { value: 'Coach', label: 'Coach' },
+  { value: 'Consultant', label: 'Consultant' },
+  { value: 'Educator', label: 'Educator' },
+  { value: 'Training Company', label: 'Training Company' },
+  { value: 'Online Academy', label: 'Online Academy' },
+  { value: 'Business / Internal Training Team', label: 'Business / Internal Training Team' },
+  { value: 'Agency / Partner', label: 'Agency / Partner' },
+  { value: 'Other', label: 'Other' }
+];
+
+const helpOptions = [
+  { value: 'Course Creation & Curriculum Design', label: 'Course Creation & Curriculum Design' },
+  { value: 'Kajabi Website & Course Setup', label: 'Kajabi Website & Course Setup' },
+  { value: 'LMS Implementation & Migration', label: 'LMS Implementation & Migration' },
+  { value: 'AI-Powered E-Learning Support', label: 'AI-Powered E-Learning Support' },
+  { value: 'Content Conversion', label: 'Content Conversion' },
+  { value: 'Funnels & Automation', label: 'Funnels & Automation' },
+  { value: 'Ongoing Support & Maintenance', label: 'Ongoing Support & Maintenance' },
+  { value: 'Not Sure Yet', label: 'Not Sure Yet' }
+];
+
+const stageOptions = [
+  { value: 'I only have an idea', label: 'I only have an idea' },
+  { value: 'I have content but no structure', label: 'I have content but no structure' },
+  { value: 'I have a course outline', label: 'I have a course outline' },
+  { value: 'I have an existing course', label: 'I have an existing course' },
+  { value: 'I have an existing Kajabi setup', label: 'I have an existing Kajabi setup' },
+  { value: 'I have an existing LMS/platform', label: 'I have an existing LMS/platform' },
+  { value: 'I am preparing for launch', label: 'I am preparing for launch' },
+  { value: 'I need ongoing support', label: 'I need ongoing support' },
+  { value: 'Not sure yet', label: 'Not sure yet' }
+];
+
+const platformOptions = [
+  { value: 'Kajabi', label: 'Kajabi' },
+  { value: 'WordPress', label: 'WordPress' },
+  { value: 'Google Drive / files only', label: 'Google Drive / files only' },
+  { value: 'Old LMS', label: 'Old LMS' },
+  { value: 'Thinkific / Teachable-style platform', label: 'Thinkific / Teachable-style platform' },
+  { value: 'Moodle-style LMS', label: 'Moodle-style LMS' },
+  { value: 'Custom course website', label: 'Custom course website' },
+  { value: 'Not using a platform yet', label: 'Not using a platform yet' },
+  { value: 'Other', label: 'Other' }
+];
+
+const formatOptions = [
+  { value: 'PDFs', label: 'PDFs' },
+  { value: 'Slides', label: 'Slides' },
+  { value: 'Videos', label: 'Videos' },
+  { value: 'Webinar recordings', label: 'Webinar recordings' },
+  { value: 'Notes / scripts', label: 'Notes / scripts' },
+  { value: 'Training manuals', label: 'Training manuals' },
+  { value: 'SOPs', label: 'SOPs' },
+  { value: 'Existing course files', label: 'Existing course files' },
+  { value: 'Google Drive folders', label: 'Google Drive folders' },
+  { value: 'No content yet', label: 'No content yet' }
+];
+
+const timelineOptions = [
+  { value: 'As soon as possible', label: 'As soon as possible' },
+  { value: '2 to 4 weeks', label: '2 to 4 weeks' },
+  { value: '1 to 2 months', label: '1 to 2 months' },
+  { value: '3+ months', label: '3+ months' },
+  { value: 'Not sure yet', label: 'Not sure yet' }
+];
+
+const budgetOptions = [
+  { value: 'Under $500', label: 'Under $500' },
+  { value: '$500 to $1,500', label: '$500 to $1,500' },
+  { value: '$1,500 to $3,500', label: '$1,500 to $3,500' },
+  { value: '$3,500 to $8,000', label: '$3,500 to $8,000' },
+  { value: '$8,000+', label: '$8,000+' },
+  { value: 'Not sure yet', label: 'Not sure yet' }
 ];
 
 const nextStepOptions = [
-  { value: 'book_session', label: 'Book a 30-minute session' },
-  { value: 'written_rec', label: 'Get a written recommendation' },
-  { value: 'proposal', label: 'Discuss a build proposal' },
-  { value: 'notsure', label: 'Not sure yet' },
+  { value: 'Send me a recommendation by email', label: 'Send me a recommendation by email' },
+  { value: 'Book a call', label: 'Book a call' },
+  { value: 'Send pricing options', label: 'Send pricing options' },
+  { value: 'Review my current setup first', label: 'Review my current setup first' },
+  { value: 'Not sure yet', label: 'Not sure yet' }
 ];
 ---
 
-<form action="/api/submit-lead" method="POST" class="space-y-5" id="audit-form">
+<!-- TODO: Implement backend integration. Using mailto: fallback for now. -->
+<form class="space-y-8" id="audit-form">
   <HiddenTrackingFields formType="audit" />
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-    <FormField name="fullName" label="Full Name" required={true} placeholder="Your Name" />
-    <FormField name="email" label="Email Address" type="email" required={true} placeholder="Your Email" />
+  <!-- Personal Information -->
+  <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+    <h3 class="text-xl font-bold text-slate-900 mb-4">1. About You</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+      <FormField name="fullName" label="Full Name" required={true} placeholder="Your Name" />
+      <FormField name="email" label="Email Address" type="email" required={true} placeholder="Your Email" />
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <FormField name="company" label="Company / Brand Name" required={true} placeholder="Company Name" />
+      <SelectField name="roleType" label="Role / Type" options={roleOptions} required={true} />
+    </div>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-    <FormField name="websiteOrCourseLink" label="Website or Course Link" type="url" required={true} placeholder="https://..." />
-    <FormField name="platform" label="Platform" placeholder="e.g. Kajabi, LearnWorlds, Teachable" />
+  <!-- Project Needs -->
+  <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+    <h3 class="text-xl font-bold text-slate-900 mb-4">2. Your Project</h3>
+
+    <div class="space-y-6">
+      <MultiSelectField name="servicesNeeded" label="What do you need help with?" options={helpOptions} required={false} />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <SelectField name="projectStage" label="Project Stage" options={stageOptions} required={true} />
+        <SelectField name="platform" label="Current Platform" options={platformOptions} required={false} />
+      </div>
+
+      <MultiSelectField name="contentFormats" label="Content Format (Select all that apply)" options={formatOptions} required={false} />
+
+      <TextAreaField name="projectDescription" label="Short Project Description" required={true} placeholder="Tell us a little bit about what you're building..." rows={4} />
+
+      <FormField name="websiteUrl" label="Website / Current Platform URL (Optional)" type="url" placeholder="https://" />
+      <TextAreaField name="mainChallenge" label="Main Challenge (Optional)" placeholder="What's your biggest roadblock right now?" rows={3} />
+    </div>
   </div>
 
-  <SelectField name="whatToReview" label="What do you want reviewed?" options={reviewOptions} required={true} />
+  <!-- Logistics -->
+  <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+    <h3 class="text-xl font-bold text-slate-900 mb-4">3. Next Steps</h3>
 
-  <TextAreaField name="mainChallenge" label="Main Challenge" required={true} placeholder="What is your biggest roadblock right now?" rows={4} />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+      <SelectField name="timeline" label="Timeline (Optional)" options={timelineOptions} required={false} />
+      <SelectField name="budgetRange" label="Budget Range (Optional)" options={budgetOptions} required={false} />
+    </div>
 
-  <SelectField name="preferredNextStep" label="Preferred Next Step" options={nextStepOptions} required={true} />
+    <SelectField name="preferredNextStep" label="Preferred Next Step" options={nextStepOptions} required={true} />
 
-  <TurnstileWidget />
+    <div class="mt-5">
+      <TextAreaField name="additionalNotes" label="Any Additional Notes (Optional)" placeholder="Anything else we should know?" rows={3} />
+    </div>
+  </div>
 
-  <p class="text-xs text-slate-500">By submitting this form, you agree to our Privacy Policy.</p>
+  <div class="flex items-start bg-blue-50 p-4 rounded-md border border-blue-100">
+    <div class="flex h-5 items-center">
+      <input
+        id="consent"
+        name="consent"
+        type="checkbox"
+        required
+        class="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+      />
+    </div>
+    <div class="ml-3 text-sm">
+      <label for="consent" class="font-medium text-blue-900">
+        I understand this audit request helps TheEduAssist review my project and recommend the right next step.
+      </label>
+    </div>
+  </div>
 
-  <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium transition-colors w-full md:w-auto" id="submit-audit-btn">
-    Request Audit
+  <p class="text-xs text-slate-500">
+    We use your details only to review your request and respond with the right next step. Do not upload confidential files through this form.
+  </p>
+
+  <button type="submit" class="bg-[#77BA55] hover:bg-green-600 text-white px-8 py-4 rounded-md font-bold text-lg transition-colors w-full md:w-auto focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600" id="submit-audit-btn">
+    Send Audit Request via Email
   </button>
 </form>
 
 <script>
   document.getElementById('audit-form')?.addEventListener('submit', (e) => {
     e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+
+    const name = formData.get('fullName') || '';
+    const email = formData.get('email') || '';
+    const company = formData.get('company') || '';
+    const roleType = formData.get('roleType') || '';
+
+    // Multi-selects
+    const services = formData.getAll('servicesNeeded').join(', ') || 'None';
+    const formats = formData.getAll('contentFormats').join(', ') || 'None';
+
+    const stage = formData.get('projectStage') || '';
+    const platform = formData.get('platform') || '';
+    const desc = formData.get('projectDescription') || '';
+    const website = formData.get('websiteUrl') || '';
+    const challenge = formData.get('mainChallenge') || '';
+    const timeline = formData.get('timeline') || '';
+    const budget = formData.get('budgetRange') || '';
+    const nextStep = formData.get('preferredNextStep') || '';
+    const notes = formData.get('additionalNotes') || '';
+
+    const body = `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nRole: ${roleType}\n\n--- PROJECT ---\nStage: ${stage}\nPlatform: ${platform}\nServices Needed: ${services}\nContent Formats: ${formats}\n\nDescription:\n${desc}\n\nWebsite: ${website}\nChallenge: ${challenge}\n\n--- LOGISTICS ---\nTimeline: ${timeline}\nBudget: ${budget}\nNext Step: ${nextStep}\n\nNotes:\n${notes}`;
+
+    window.location.href = `mailto:Info@theeduassist.com?subject=Free Audit Request - ${encodeURIComponent(company.toString())}&body=${encodeURIComponent(body)}`;
+
     const btn = document.getElementById('submit-audit-btn') as HTMLButtonElement;
     if(btn) {
-      btn.disabled = true;
-      btn.innerText = 'Submitting...';
+      btn.innerText = 'Opening Email App...';
+      setTimeout(() => {
+        window.location.href = '/thank-you/';
+      }, 1000);
     }
-
-    setTimeout(() => {
-      window.location.href = '/thank-you/?type=audit';
-    }, 1000);
   });
 </script>

@@ -1,64 +1,37 @@
 ---
-import SectionHeader from '../ui/SectionHeader.astro';
 import FAQAccordion from '../ui/FAQAccordion.astro';
 
 const faqs = [
   {
-    question: "Is the Kajabi audit really free?",
-    answer: "Yes. The free audit is designed to help you understand what your Kajabi setup may need next."
+    question: "Is the audit really free?",
+    answer: "Yes. The audit request helps us understand your project and recommend the right next step. Full implementation work is quoted separately."
   },
   {
-    question: "Do I need to already have a Kajabi account?",
-    answer: "No. You can book the audit if you already use Kajabi or if you are planning to build on Kajabi."
+    question: "Do I need to have course content ready?",
+    answer: "No. You can submit an idea, rough notes, existing content, Kajabi setup, LMS, or scattered files."
   },
   {
-    question: "Can you review my existing Kajabi website?",
-    answer: "Yes. We can review your website structure, landing pages, offer flow, course setup, funnel, and email automation."
+    question: "Can you review my Kajabi setup?",
+    answer: "Yes. Kajabi is one of our strongest specialties."
   },
   {
-    question: "Can you help if my content is still messy?",
-    answer: "Yes. You can bring raw outlines, PDFs, videos, slide decks, Google Drive folders, or existing WordPress content."
+    question: "Can you review LMS or WordPress content?",
+    answer: "Yes. We can review LMS content, WordPress course pages, Google Drive folders, PDFs, videos, and other training materials."
   },
   {
-    question: "Will you guarantee course sales after the audit?",
-    answer: "No. TheEduAssist does not guarantee sales or revenue. The audit focuses on clarity, structure, learner experience, and launch readiness."
+    question: "Will you give pricing?",
+    answer: "We can recommend a package or custom quote after reviewing your audit details. Pricing depends on scope, content volume, platform, timeline, and launch needs."
   },
   {
-    question: "What happens after the audit?",
-    answer: "You can decide whether to fix things yourself or work with TheEduAssist on website design, course setup, funnels, automations, migration, templates, or support."
-  },
-  {
-    question: "Can I book if I only need one page fixed?",
-    answer: "Yes. The audit can help identify whether you need one page, one funnel, one course setup, or a larger system cleanup."
+    question: "Do you guarantee sales?",
+    answer: "No. We help improve structure, learning experience, platform setup, funnels, and launch readiness, but sales depend on offer, audience, traffic, pricing, trust, and other factors."
   }
 ];
-
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqs.map(faq => ({
-    "@type": "Question",
-    "name": faq.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": faq.answer
-    }
-  }))
-};
 ---
 
-<section class="py-16 md:py-24 bg-white" id="faq">
-  <div class="container mx-auto px-4 md:px-6 max-w-3xl">
-    <SectionHeader
-      title="Frequently Asked Questions"
-      subtitle="Everything you need to know about the free Kajabi audit."
-      centered={true}
-    />
-
-    <div class="mt-12 space-y-4">
-      <FAQAccordion items={faqs} />
-    </div>
+<section class="py-24 bg-slate-50 border-t border-slate-200">
+  <div class="max-w-3xl mx-auto px-4">
+    <h2 class="text-3xl font-bold mb-10 text-center text-slate-900">Free Audit FAQ</h2>
+    <FAQAccordion items={faqs} />
   </div>
-
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 </section>
