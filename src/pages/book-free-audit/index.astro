@@ -6,6 +6,7 @@ import CalendlyCTA from "../../components/audit/CalendlyCTA.astro";
 import AuditNextSteps from "../../components/audit/AuditNextSteps.astro";
 import AuditFAQ from "../../components/audit/AuditFAQ.astro";
 import { webPageSchema, faqPageSchema, breadcrumbSchema } from '../../lib/schema';
+import { packages } from "../../data/packages";
 
 // Required FAQ array for the Schema
 const auditFaqs = [
@@ -71,28 +72,34 @@ const trustChips = [
     primaryCtaLabel="Start Request Form"
     primaryCtaLink="#audit-form-section"
     secondaryCtaLabel="Email Instead"
-    secondaryCtaLink="mailto:Info@theeduassist.com"
+    secondaryCtaLink="mailto:Info@theeduassist.com?subject=TheEduAssist%20Project%20Inquiry&body=Hi%20TheEduAssist%2C%0A%0AI%20would%20like%20to%20discuss%20a%20course%2C%20Kajabi%2C%20LMS%2C%20content%20conversion%2C%20or%20e-learning%20project.%0A%0AMy%20project%20details%3A%0A"
     trustChips={trustChips}
   />
 
   <AuditReviewScope />
 
+
   <section id="audit-form-section" class="py-24 bg-slate-50 border-t border-slate-200">
     <div class="max-w-4xl mx-auto px-4">
       <div class="bg-white p-4 md:p-10 rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-        <h2 class="text-3xl font-bold mb-8 text-center text-slate-900">Tell Us About Your Project</h2>
 
-        <!-- Google Form Setup Note:
-             - Create the form under Info@theeduassist.com
-             - Link responses to Google Sheet
-             - Turn on new response email notifications
-             - Use prefilled links later for service-specific CTAs
-             - Avoid file upload for now
-             - Ask users to share links instead of confidential files
-        -->
+        <div id="package-selected-card" class="hidden mb-10 bg-[#F8FAFC] border border-[#27496D]/20 rounded-xl p-6 text-center shadow-sm">
+          <h2 class="text-xl font-bold text-[#27496D] mb-2">You selected: <span id="pkg-name" class="text-[#77BA55]"></span></h2>
+          <div class="text-lg font-semibold text-slate-700 mb-4">Starting price: <span id="pkg-price"></span></div>
+          <p class="text-slate-600 mb-6 max-w-2xl mx-auto font-medium">Next step: <span id="pkg-next"></span></p>
+          <div class="text-xs text-slate-500 max-w-3xl mx-auto border-t border-slate-200 pt-4">
+            Starting prices are not fixed final quotes. Final scope depends on content volume, platform, course length, page count, review rounds, automations, integrations, and launch support.
+          </div>
+        </div>
+
+        <div id="package-general-message" class="mb-10 text-center">
+          <h2 class="text-3xl font-bold mb-4 text-slate-900">Tell Us About Your Project</h2>
+          <p class="text-slate-600 max-w-2xl mx-auto text-lg">Tell us what you are building, fixing, migrating, converting, or launching. We’ll recommend the best service path within 24–48 hours.</p>
+        </div>
+
         <div class="w-full relative min-h-[800px] rounded-lg overflow-hidden border border-slate-100">
           <iframe
-            src="GOOGLE_FORM_EMBED_URL"
+            src="https://docs.google.com/forms/d/e/1FAIpQLSceDHOuoN8pGLzkG80JDiQFFtZRr9mxQTHkVRZnWqe3pnesDA/viewform?embedded=true"
             width="100%"
             height="100%"
             class="absolute top-0 left-0 w-full h-full border-0"
@@ -103,7 +110,7 @@ const trustChips = [
         <div class="mt-8 text-center border-t border-slate-100 pt-6">
           <p class="text-slate-600 mb-4">Having trouble viewing the form?</p>
           <a
-            href="GOOGLE_FORM_PUBLIC_URL"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSceDHOuoN8pGLzkG80JDiQFFtZRr9mxQTHkVRZnWqe3pnesDA/viewform"
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center justify-center bg-white text-blue-600 border border-blue-200 hover:bg-blue-50 px-6 py-3 rounded-md font-semibold transition-colors"
@@ -114,6 +121,29 @@ const trustChips = [
       </div>
     </div>
   </section>
+
+  <script define:vars={{ packages }}>
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const packageSlug = urlParams.get('package');
+
+      const selectedCard = document.getElementById('package-selected-card');
+      const generalMessage = document.getElementById('package-general-message');
+
+      if (packageSlug && packages) {
+        const pkg = packages.find(p => p.slug === packageSlug);
+        if (pkg) {
+          document.getElementById('pkg-name').textContent = pkg.name;
+          document.getElementById('pkg-price').textContent = pkg.startingPrice;
+          document.getElementById('pkg-next').textContent = pkg.nextStep;
+
+          selectedCard.classList.remove('hidden');
+          generalMessage.classList.add('hidden');
+        }
+      }
+    });
+  </script>
+
 
   <CalendlyCTA />
 

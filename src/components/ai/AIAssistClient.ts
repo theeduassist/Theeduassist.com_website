@@ -10,35 +10,49 @@ export const instructions: Record<string, string> = {
     ask_questions: "Create a list of smart questions I should ask TheEduAssist before booking a call about this page, service, or solution. Group the questions by strategy, content, platform, learner experience, launch, pricing, and timeline."
 };
 
-export function generatePrompt(actionId: string): string {
+export function generatePrompt(actionId?: string): string {
     const pageTitle = document.title;
     const pageUrl = window.location.href;
-    let pageDescription = document.querySelector('meta[name="description"]')?.getAttribute("content") || "";
+    const pageDescription = document.querySelector('meta[name="description"]')?.getAttribute("content") || "";
+    const h1 = document.querySelector('h1')?.innerText || "";
 
-    if (!pageDescription) {
-        const firstHeading = document.querySelector('h1, h2')?.textContent;
-        const firstPara = document.querySelector('p')?.textContent;
-        pageDescription = firstHeading || firstPara || "";
+    const mainElement = document.querySelector('main') || document.querySelector('article') || document.body;
+    let pageContext = "";
+    if (mainElement) {
+        pageContext = (mainElement as HTMLElement).innerText || "";
+        pageContext = pageContext.replace(/\s+/g, ' ').trim().substring(0, 1500);
     }
 
-    const selectedPromptInstruction = instructions[actionId] || instructions["summarize_page"];
+    if (!pageContext) {
+        pageContext = "No visible text context found.";
+    }
 
     return `I am viewing a page on TheEduAssist website.
 
 Brand context:
-${brandContext}
+TheEduAssist is a multi-platform e-learning design and course-building agency. It helps creators, coaches, consultants, educators, training companies, online academies, publishers, and businesses build structured online courses, Kajabi systems, LMS experiences, content conversion workflows, AI-assisted learning assets, funnels, automations, launch systems, and ongoing course support.
 
-Page title:
-${pageTitle}
+Current page:
+Title: ${pageTitle}
+URL: ${pageUrl}
+Description: ${pageDescription}
+Main heading: ${h1}
 
-Page URL:
-${pageUrl}
-
-Page description:
-${pageDescription}
+Visible page context:
+${pageContext}
 
 Task:
-${selectedPromptInstruction}`;
+Please summarize this page in simple, practical language. Explain:
+
+1. What this page is about
+2. Who it is for
+3. What problem it solves
+4. What TheEduAssist offers here
+5. What next step I should take
+6. What questions I should ask TheEduAssist before buying
+
+Important:
+Do not invent services, prices, results, testimonials, partnerships, or claims that are not visible on the page.`;
 }
 
 export async function copyAndOpenAI(actionId: string, platformUrl: string, platformName: string) {

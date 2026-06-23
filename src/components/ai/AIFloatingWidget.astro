@@ -35,29 +35,19 @@ const actions = [
         </div>
 
         <div class="p-4 max-h-[60vh] overflow-y-auto custom-scrollbar">
-            <p class="text-xs text-slate-600 mb-4">Copy a ready-made prompt and open your preferred AI assistant.</p>
+            <p class="text-sm text-slate-600 mb-6">We’ll copy a page-aware prompt, then open your chosen AI assistant.</p>
 
-            <!-- Step 1: Action -->
-            <div class="mb-5">
-                <label class="block text-xs font-bold text-slate-800 mb-2 uppercase tracking-wide">1. Select Action</label>
-                <select id="ai-widget-action" class="w-full text-sm border border-slate-200 rounded-md p-2 bg-slate-50 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none text-slate-700 cursor-pointer">
-                    {actions.map(action => (
-                        <option value={action.id}>{action.label}</option>
-                    ))}
-                </select>
-            </div>
-
-            <!-- Step 2: Platform -->
-            <div>
-                <label class="block text-xs font-bold text-slate-800 mb-2 uppercase tracking-wide flex justify-between items-center">
-                    <span>2. Choose AI</span>
-                    <button id="ai-widget-copy-only" class="text-brand-accent hover:text-brand-primary underline text-[10px] font-normal focus:outline-none">Copy prompt only</button>
-                </label>
+            <div class="space-y-4">
+                <label class="block text-xs font-bold text-slate-800 uppercase tracking-wide">Choose your AI Assistant:</label>
                 <div class="grid grid-cols-2 gap-2">
                     {aiAssistants.map(assistant => (
                         <AIAssistantButton assistant={assistant} variant="button" class="widget-platform-btn" />
                     ))}
                 </div>
+            </div>
+
+            <div class="mt-4 pt-4 border-t border-slate-100 flex justify-end">
+                 <button id="ai-widget-copy-only" class="text-brand-accent hover:text-brand-primary underline text-xs font-medium focus:outline-none focus-ring">Copy prompt only</button>
             </div>
         </div>
     </div>
@@ -72,7 +62,6 @@ const actions = [
         const panel = document.getElementById('ai-widget-panel');
         const minimizeBtn = document.getElementById('ai-widget-minimize');
         const closeBtn = document.getElementById('ai-widget-close');
-        const actionSelect = document.getElementById('ai-widget-action') as HTMLSelectElement;
         const platformBtns = document.querySelectorAll('.widget-platform-btn');
         const copyOnlyBtn = document.getElementById('ai-widget-copy-only');
 
@@ -124,7 +113,7 @@ const actions = [
         platformBtns.forEach(btn => {
             btn.addEventListener('click', async (e) => {
                 const target = e.currentTarget as HTMLButtonElement;
-                const actionId = actionSelect.value;
+                const actionId = 'summarize_page'; // Using standard prompt since select was removed
                 const url = target.dataset.aiUrl || '';
                 const name = target.dataset.aiName || '';
 
@@ -135,7 +124,7 @@ const actions = [
 
         // Copy only click
         copyOnlyBtn?.addEventListener('click', async () => {
-            const actionId = actionSelect.value;
+            const actionId = 'summarize_page';
             const prompt = generatePrompt(actionId);
 
             try {
