@@ -2,7 +2,7 @@
 // src/components/course-creation/CoursePackages.astro
 const packages = [
   {
-    title: "Course Clarity Blueprint",
+    slug: "course-clarity-blueprint", title: "Course Clarity Blueprint",
     price: "Starting from $500",
     bestFor: "Creators and coaches with an idea but no clear structure.",
     timeline: "1 week",
@@ -16,7 +16,7 @@ const packages = [
     ]
   },
   {
-    title: "Curriculum Design Build",
+    slug: "content-conversion-kit", title: "Curriculum Design Build",
     price: "Starting from $1,200",
     bestFor: "Educators, consultants, and training teams that need a full course structure before building in Kajabi or an LMS.",
     timeline: "2-4 weeks",
@@ -32,7 +32,7 @@ const packages = [
     highlight: true
   },
   {
-    title: "Course Content Production",
+    slug: "content-conversion-kit", title: "Course Content Production",
     price: "Starting from $2,500",
     bestFor: "Clients who need lesson scripts, worksheets, quizzes, summaries, resources, and platform-ready learning assets.",
     timeline: "4-6 weeks",
@@ -47,7 +47,7 @@ const packages = [
     ]
   },
   {
-    title: "Course + Platform Launch Build",
+    slug: "course-platform-build", title: "Course + Platform Launch Build",
     price: "Custom quote, usually starting from $4,000",
     bestFor: "Clients who want course creation plus Kajabi/LMS build, funnel assets, onboarding, and launch support.",
     timeline: "2-3 months",
@@ -108,7 +108,7 @@ const packages = [
           </div>
 
           <div class="p-8 pt-0 mt-auto space-y-3">
-             <a href="/book-free-audit/" class={`block w-full text-center py-3 px-4 rounded-md font-bold transition-all ${pkg.highlight ? 'bg-brand-primary text-white hover:bg-brand-navy shadow-md' : 'bg-brand-navy text-white hover:bg-opacity-90 shadow-sm'}`}>
+             <a href={`/book-free-audit/?package=${pkg.slug}`} class={`block w-full text-center py-3 px-4 rounded-md font-bold transition-all ${pkg.highlight ? 'bg-brand-primary text-white hover:bg-brand-navy shadow-md' : 'bg-brand-navy text-white hover:bg-opacity-90 shadow-sm'}`}>
                 Start This Project
              </a>
              <a href="/book-free-audit/" class="block w-full text-center py-3 px-4 rounded-md font-bold text-brand-navy border border-brand-border hover:bg-brand-softBg transition-all">
