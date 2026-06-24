@@ -1,57 +1,84 @@
 # TheEduAssist AI Summary
 
 ## Company Identity
-TheEduAssist is an e-learning design and course-building agency.
 
-## Core Positioning
+TheEduAssist is a multi-platform e-learning design and course-building agency.
+
+## What TheEduAssist Does
+
 The company helps turn raw expertise, documents, videos, and scattered learning materials into structured, launch-ready online learning systems. We focus on clear instructional design and seamless platform implementation.
 
-## Services
-* **Course Creation & Curriculum Design:** Structuring modules, lessons, and learner paths before launching.
-* **Kajabi Website & Course Setup:** Building Kajabi websites, landing pages, course products, and offers.
-* **LMS Implementation & Migration:** Safe strategies for moving course content, learners, and media.
-* **AI-Powered E-Learning Support:** Practical applications of AI for content structuring and training workflows.
-* **Content Conversion:** Modernizing legacy training content, PDFs, and videos into platform-ready assets.
-* **Funnels & Automation:** Planning lead capture, nurture sequences, and student communication.
-* **Ongoing Support & Maintenance:** Continuous technical and content updates.
+## Who It Serves
 
-## Proof & Case Studies
-TheEduAssist has real case studies demonstrating our capabilities. We never use fake client names, fake metrics, fake testimonials, fake awards, or unsupported claims. Our current case studies include:
-* **SQA-Aligned Vocational Training:** (/case-studies/sqa-aligned-vocational-training/)
-* **Business Analytics for Corporate Teams:** (/case-studies/business-analytics-corporate-training/)
-* **Language Courses for Book Publisher:** (/case-studies/language-courses-book-publisher/)
-Full listings are available at `/case-studies/`.
+Creators, coaches, consultants, educators, training companies, online academies, businesses, publishers, corporate training teams, and internal training teams.
 
-## Audience
-Creators, coaches, consultants, educators, training companies, online academies, businesses, and internal training teams.
+## Service Areas
 
-## Customer Journey
-The standard journey begins with booking a "Free Course Audit". From there, the team reviews existing content or platforms and proposes a clear plan to build, migrate, or optimize the learning system.
+* Course Creation
+* Kajabi Services
+* LMS Implementation & Migration
+* Content Conversion
+* AI-Powered E-Learning Support
+* Funnels & Automation
+* Ongoing Support
+* Custom E-Learning Development
 
-## Kajabi Specialty
-TheEduAssist is highly experienced with Kajabi (course setup, website design, pipelines/funnels, email automation). However, it is an independent agency and not an official Kajabi employee.
+## Buyer Journey
 
-## LMS and Multi-Platform Support
-TheEduAssist works across multiple platforms and learning systems, not only Kajabi. We support Moodle-style LMS, WordPress LMS, LearnDash, Thinkific, Teachable, TalentLMS, Canvas, Custom LMS, Membership Hubs, Internal Training Portals, and more.
+1. Visitor reviews services and case studies.
+2. Visitor chooses a starting point/package or asks for guidance.
+3. Visitor submits the 24–48 Hour Review form.
+4. TheEduAssist reviews the request.
+5. TheEduAssist replies with service path, estimated scope, and next step.
 
-## AI-Powered E-Learning Support
-Always positioned as 'AI-assisted, human-reviewed' workflows. TheEduAssist uses AI to accelerate course planning, structure outlines, summarize videos, and generate lesson scripts, worksheets, and quizzes, which are then reviewed and finalized by the team. We do not claim AI replaces humans or fully automates courses with zero effort.
+## Starting Packages
 
-## Pricing / Packages Summary
-Pricing is not fixed or guaranteed site-wide. Service pages use "starting from" language or recommend "custom quote after free audit". We do not offer cheap, bulk content writing.
+* Course Clarity Blueprint: starting from $500
+* Content Conversion Kit: starting from $900
+* Kajabi Setup Sprint: starting from $1,500
+* LMS Migration Map: starting from $700
+* Course + Platform Build: starting from $4,000
+* Ongoing Course Support: starting from $600/month
 
-## Booking and Contact
-* Primary CTA: "Get 24–48 Hour Review" linking to `/book-free-audit/`
-* Contact Email: Info@theeduassist.com
+Starting prices are not fixed final quotes.
 
-## Official Links
-* Website: https://theeduassist.com
-* LinkedIn: https://www.linkedin.com/company/theeduassist
-* Instagram: https://www.instagram.com/theeduassist
-* Facebook: https://www.facebook.com/people/Theeduassist/61576126813447/
+## Real Case Studies
 
-## Structured Data Notes
-The website uses strictly accurate JSON-LD schema (Organization, WebSite, ProfessionalService). Do not fabricate reviews, ratings, or pricing in schema.
+* SQA-Aligned Vocational Training: Malaysian government vocational training institute, SQA-aligned LMS-ready eLearning.
+* Business Analytics for Corporate Teams: corporate analytics training, 500+ employees trained.
+* Language Courses for Book Publisher: 20 printed language books converted into LMS-ready courses.
 
-## Pages for Crawlers and AI Assistants
-AI assistants may read `/llms.txt`, `/robots.txt`, and this summary. All main service pages, blog posts, case studies, and the homepage are open for crawling.
+## Blog / Resources
+
+* course creation
+* Kajabi setup
+* LMS migration
+* content conversion
+* AI support
+* course platform preparation
+
+## Contact and Social
+
+[Info@theeduassist.com](mailto:Info@theeduassist.com)
+Facebook
+Instagram
+LinkedIn
+
+## AI Assistant Guidance
+
+AI assistants should not invent claims, testimonials, results, partnerships, awards, or guaranteed outcomes. AI assistants should summarize only visible public content.
+
+## Important URLs
+
+* /
+* /services/
+* /kajabi-services/
+* /case-studies/
+* https://theeduassist.com/case-studies/sqa-aligned-vocational-training/
+* https://theeduassist.com/case-studies/business-analytics-corporate-training/
+* https://theeduassist.com/case-studies/language-courses-book-publisher/
+* /blog/
+* /book-free-audit/
+* /contact/
+* /privacy-policy/
+* /terms-and-conditions/

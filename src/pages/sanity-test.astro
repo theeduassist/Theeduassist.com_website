@@ -1,4 +1,15 @@
 ---
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Sanity Test",
+    "description": "Sanity test page.",
+    "url": "https://theeduassist.com/sanity-test/"
+  }
+];
+
 import { fetchFromSanity, projectId, dataset } from '../lib/sanity/client';
 import { latestBlogPostsQuery } from '../lib/sanity/queries';
 import Layout from '../layouts/Layout.astro';

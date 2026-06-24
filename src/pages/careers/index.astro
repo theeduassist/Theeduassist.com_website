@@ -1,8 +1,30 @@
 ---
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://theeduassist.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Careers",
+        "item": "https://theeduassist.com/careers/"
+      }
+    ]
+  }
+];
+
 import Layout from "../../layouts/Layout.astro";
 import HomeHero from "../../components/sections/HomeHero.astro";
 ---
-<Layout title="Careers" description="Join TheEduAssist team. We are always looking for talented learning professionals.">
+<Layout jsonLd={jsonLd} title="Careers" description="Join TheEduAssist team. We are always looking for talented learning professionals.">
 
   <HomeHero
     title="Careers at TheEduAssist"
