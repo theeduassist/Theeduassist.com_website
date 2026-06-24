@@ -1,14 +1,5 @@
 export const blogCategories = [
   {
-    title: "Kajabi",
-    slug: "kajabi",
-    description: "Articles about Kajabi setup, features, and best practices.",
-    showPublicPage: false,
-    noindex: true,
-    oldCategoryUrls: [],
-    notes: ""
-  },
-  {
     title: "Course Creation",
     slug: "course-creation",
     description: "Resources for setting up and creating online courses.",
@@ -18,9 +9,9 @@ export const blogCategories = [
     notes: ""
   },
   {
-    title: "E-Learning Design",
-    slug: "e-learning-design",
-    description: "Insights into creating engaging and effective eLearning experiences.",
+    title: "Kajabi",
+    slug: "kajabi",
+    description: "Articles about Kajabi setup, features, and best practices.",
     showPublicPage: false,
     noindex: true,
     oldCategoryUrls: [],
@@ -36,24 +27,6 @@ export const blogCategories = [
     notes: ""
   },
   {
-    title: "AI in Learning",
-    slug: "ai-in-learning",
-    description: "Exploring the role of AI in online education and course creation.",
-    showPublicPage: false,
-    noindex: true,
-    oldCategoryUrls: [],
-    notes: ""
-  },
-  {
-    title: "Corporate Training",
-    slug: "corporate-training",
-    description: "Strategies for effective employee and corporate training programs.",
-    showPublicPage: false,
-    noindex: true,
-    oldCategoryUrls: [],
-    notes: ""
-  },
-  {
     title: "Content Conversion",
     slug: "content-conversion",
     description: "Updating and digitizing legacy training materials.",
@@ -63,17 +36,17 @@ export const blogCategories = [
     notes: ""
   },
   {
-    title: "Instructional Design",
-    slug: "instructional-design",
-    description: "Principles and practices of instructional design.",
+    title: "AI E-Learning",
+    slug: "ai-e-learning",
+    description: "Exploring the role of AI in online education and course creation.",
     showPublicPage: false,
     noindex: true,
     oldCategoryUrls: [],
     notes: ""
   },
   {
-    title: "Funnel and Email Automation",
-    slug: "funnel-and-email-automation",
+    title: "Funnels & Automation",
+    slug: "funnels-and-automation",
     description: "Plan lead capture, nurture sequences, launch emails, and automation.",
     showPublicPage: false,
     noindex: true,
@@ -81,9 +54,18 @@ export const blogCategories = [
     notes: ""
   },
   {
-    title: "Platform Comparisons",
-    slug: "platform-comparisons",
-    description: "Comparisons and guides for various eLearning platforms.",
+    title: "Case Studies",
+    slug: "case-studies",
+    description: "Real-world examples of successful e-learning projects.",
+    showPublicPage: false,
+    noindex: true,
+    oldCategoryUrls: [],
+    notes: ""
+  },
+  {
+    title: "Online Course Support",
+    slug: "online-course-support",
+    description: "Ongoing management and support for online course platforms.",
     showPublicPage: false,
     noindex: true,
     oldCategoryUrls: [],

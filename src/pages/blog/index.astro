@@ -9,12 +9,14 @@ import TopicClusterMap from '../../components/blog/TopicClusterMap.astro';
 import BlogCTA from '../../components/blog/BlogCTA.astro';
 import AIPageAssistBar from '../../components/blog/AIPageAssistBar.astro';
 
+import LatestArticles from '../../components/blog/LatestArticles.astro';
+
 // SEO details
-const title = "TheEduAssist Blog | Kajabi, Course Creation & E-Learning Design Resources";
-const description = "Explore practical resources from TheEduAssist on Kajabi websites, course setup, funnels, email automation, LMS migration, AI learning, instructional design, and e-learning strategy.";
+const title = "Blog & Resources | E-Learning, Kajabi, LMS & Course Design Insights | TheEduAssist";
+const description = "Read practical guides from TheEduAssist on course creation, Kajabi setup, LMS migration, content conversion, AI-powered e-learning, funnels, and online course support.";
 const canonicalPath = "/blog/";
-const ogTitle = "TheEduAssist Blog";
-const ogDescription = "Guides and resources for building better Kajabi websites, courses, funnels, and e-learning systems.";
+const ogTitle = title;
+const ogDescription = description;
 
 // Basic WebPage schema for the hub
 const schema = {
@@ -50,7 +52,7 @@ const schema = {
 
     <FeaturedResourceGrid />
 
-    <!-- "Latest Articles" section will go here when real reviewed posts exist -->
+    <LatestArticles />
 
     <div class="my-16">
         <BlogMigrationFlow />
