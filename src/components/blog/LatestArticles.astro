@@ -1,0 +1,50 @@
+---
+import BlogCard from './BlogCard.astro';
+import { blogPosts } from '../../data/blogPosts';
+import { fetchFromSanity } from '../../sanity/client';
+import { latestBlogPostsQuery } from '../../sanity/queries';
+
+// Fetch from Sanity, fallback to static
+let posts = [];
+try {
+  const sanityPosts = await fetchFromSanity(latestBlogPostsQuery, { status: 'published' });
+  if (sanityPosts && sanityPosts.length > 0) {
+    posts = sanityPosts;
+  } else {
+    posts = blogPosts.filter(p => p.status === 'published');
+  }
+} catch (e) {
+  posts = blogPosts.filter(p => p.status === 'published');
+}
+---
+
+<div class="mb-16 mt-16">
+  <div class="flex justify-between items-end mb-8 border-b border-slate-200 pb-4">
+    <div>
+      <h2 class="text-3xl font-bold text-slate-800">Latest Articles</h2>
+      <p class="text-slate-600 mt-2">Deep dives, guides, and practical advice.</p>
+    </div>
+  </div>
+
+  {posts.length === 0 ? (
+    <div class="text-center py-12 bg-slate-50 rounded-lg border border-slate-200 border-dashed">
+      <p class="text-slate-600">New articles coming soon.</p>
+    </div>
+  ) : (
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {posts.slice(0, 6).map(post => (
+        <BlogCard
+          title={post.title}
+          slug={post.slug?.current || post.slug}
+          excerpt={post.excerpt}
+          category={post.category}
+          readTimeMinutes={post.readingTime}
+          publishedAt={post.publishedAt}
+          image={post.heroImage || post.featuredImage?.asset?.url}
+          imageAlt={post.heroImageAlt || post.featuredImage?.alt}
+          tags={post.tags}
+        />
+      ))}
+    </div>
+  )}
+</div>

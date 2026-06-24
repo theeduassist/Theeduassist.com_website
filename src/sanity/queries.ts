@@ -75,6 +75,26 @@ export async function getPostBySlug(slug: string) {
   return await fetchFromSanity(`*[_type == "post" && slug.current == $slug][0]`, { slug })
 }
 
+// Get latest blog posts
+export const latestBlogPostsQuery = `*[_type == "post" && status == "published"] | order(publishedAt desc) {
+  title,
+  slug,
+  excerpt,
+  category,
+  tags,
+  "author": author->name,
+  publishedAt,
+  updatedAt,
+  readingTime,
+  featuredImage {
+    asset->{
+      url
+    },
+    alt
+  },
+  content
+}`;
+
 // Testimonials
 export async function getAllTestimonials() {
   return await fetchFromSanity(`*[_type == "testimonial" && showOnSite == true] | order(orderRank asc)`)
