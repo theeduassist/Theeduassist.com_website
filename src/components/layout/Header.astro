@@ -67,7 +67,7 @@ const servicesDropdown = [
                 <div class="absolute right-0 mt-2 w-64 bg-white/95 backdrop-blur-md rounded-xl shadow-xl border border-brand-border/50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top translate-y-2 group-hover:translate-y-0 z-50 overflow-hidden">
                     <div class="py-2 header-ai-dropdown">
                         {aiAssistants.map((item) => (
-                            <button data-ai-url={item.url} data-ai-name={item.name} class="header-ai-btn w-full text-left block px-4 py-2.5 text-sm font-medium text-brand-textMain hover:bg-brand-softBg hover:text-brand-primary transition-colors focus-ring">
+                            <button data-ai-url={item.baseUrl} data-ai-name={item.name} class="header-ai-btn w-full text-left block px-4 py-2.5 text-sm font-medium text-brand-textMain hover:bg-brand-softBg hover:text-brand-primary transition-colors focus-ring">
                                 {item.name}
                             </button>
                         ))}

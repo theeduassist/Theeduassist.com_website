@@ -9,7 +9,7 @@ const scrollItems = [...aiAssistants, ...aiAssistants];
 <div class="border-t border-brand-border/20 bg-brand-navy/30 py-8 relative overflow-hidden group">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 text-center">
         <h3 class="text-white font-bold text-lg mb-2">Explore this page with your preferred AI assistant</h3>
-        <p class="text-sm text-slate-400 max-w-2xl mx-auto">Copy a ready-made prompt and open ChatGPT, Claude, Gemini, Perplexity, Copilot, or Grok to understand this page faster.</p>
+        <p class="text-sm text-slate-400 max-w-2xl mx-auto">Open your chosen AI assistant with a page-summary prompt where supported, or paste the copied prompt to understand this page faster.</p>
     </div>
 
     <!-- Scrolling Track container -->
@@ -35,7 +35,7 @@ const scrollItems = [...aiAssistants, ...aiAssistants];
         <ul>
              {aiAssistants.map((assistant) => (
                 <li>
-                    <button class="footer-ai-btn" data-ai-id={assistant.id} data-ai-url={assistant.url} data-ai-name={assistant.name}>
+                    <button class="footer-ai-btn" data-ai-id={assistant.id} data-ai-url={assistant.baseUrl} data-ai-name={assistant.name}>
                         Open {assistant.name}
                     </button>
                 </li>
