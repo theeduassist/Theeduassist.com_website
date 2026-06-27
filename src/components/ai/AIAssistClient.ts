@@ -2,15 +2,14 @@ import { buildAiAssistantUrl } from '../../utils/aiUrls';
 import { aiAssistants } from '../../data/aiAssistants';
 
 // AIAssistClient.ts
-export const brandContext = "TheEduAssist is an e-learning design and course-building agency. It helps creators, coaches, consultants, educators, training companies, online academies, and businesses build complete online learning systems. Services include course creation, curriculum design, Kajabi websites and course setup, LMS implementation and migration, instructional design, learner experience, AI-powered e-learning support, content conversion, funnels, automation, templates, launch support, and ongoing support.";
+export const brandContext = "TheEduAssist is a multi-platform e-learning design and course-building agency for creators, educators, coaches, consultants, training companies, publishers, online academies, businesses, and corporate learning teams.";
 
 export const instructions: Record<string, string> = {
-    summarize_page: "Please summarize this page in simple, practical language. Explain what this page is about, who it is for, what problem it solves, what TheEduAssist offers, and what next step I should take.",
-    explain_service: "Explain this service in simple words. Tell me what it includes, who needs it, how it helps creators, coaches, educators, academies, training companies, or businesses, what results it supports, and what questions I should ask before booking a call.",
-    help_me_choose: "Help me decide if this service is right for me. My goal may be to build, improve, migrate, or sell an online course or learning platform. Explain whether this service fits my needs, what type of business would benefit from it, what I should prepare, and what next step I should take.",
-    create_action_plan: "Turn this page into a practical action plan for building or improving an online course or learning system. Include course strategy, content structure, learner experience, Kajabi or LMS setup needs, automation ideas, funnel ideas, and next steps.",
-    compare_options: "Compare the service or solution on this page with other possible course platform, LMS, Kajabi, or e-learning setup options. Explain the pros, limitations, best-fit use cases, and what I should ask before choosing.",
-    ask_questions: "Create a list of smart questions I should ask TheEduAssist before booking a call about this page, service, or solution. Group the questions by strategy, content, platform, learner experience, launch, pricing, and timeline."
+    summarize_page: "Summarize the page in simple terms and highlight the most important next step.",
+    help_me_choose: "Compare the packages and suggest which one may fit different situations.",
+    compare_platforms: "Explain the platform options mentioned here and help me understand which direction fits a creator, training company, or corporate team.",
+    explain_pricing: "Explain the starting prices and what factors may change the final quote.",
+    create_action_plan: "Give me a short action plan for what to prepare before contacting TheEduAssist."
 };
 
 function getPageData() {
@@ -34,24 +33,7 @@ function getPageData() {
 }
 
 export function generateUrlPrompt(): string {
-    const { pageTitle, pageUrl, pageDescription, h1 } = getPageData();
-
-    return `I am viewing this TheEduAssist page:
-
-Title: ${pageTitle}
-URL: ${pageUrl}
-Description: ${pageDescription}
-Main heading: ${h1}
-
-Please summarize this page and explain:
-
-1. What this page is about
-2. Who it is for
-3. What TheEduAssist offers here
-4. What next step I should take
-5. What questions I should ask before buying
-
-Important: Do not invent claims, prices, testimonials, partnerships, or results that are not visible on the page.`;
+    return generateFullPrompt('summarize_page'); // Fallback for limited AI prefill capacity
 }
 
 export function generatePrompt(actionId?: string): string {
@@ -60,33 +42,24 @@ export function generatePrompt(actionId?: string): string {
 
 export function generateFullPrompt(actionId?: string): string {
     const { pageTitle, pageUrl, pageDescription, h1, pageContext } = getPageData();
+    const actionInstruction = actionId && instructions[actionId] ? instructions[actionId] : instructions.summarize_page;
 
-    return `I am viewing a page on TheEduAssist website.
+    return `I am reviewing this TheEduAssist page: ${pageTitle} — ${pageUrl}
 
-Brand context:
-TheEduAssist is a multi-platform e-learning design and course-building agency. It helps creators, coaches, consultants, educators, training companies, online academies, publishers, corporate teams, and organizations build structured online courses, Kajabi systems, LMS experiences, content conversion workflows, AI-assisted learning assets, funnels, automations, launch systems, and ongoing course support.
+${brandContext}
 
-Current page:
-Title: ${pageTitle}
-URL: ${pageUrl}
-Description: ${pageDescription}
+Please help me understand this page. Summarize the key points, explain which service, platform, or package may fit my situation, and list the questions I should ask the sales team before starting. Treat all listed prices as starting prices, not final quotes.
+
+Current Task:
+${actionInstruction}
+
+Page description: ${pageDescription}
 Main heading: ${h1}
 
 Visible page context:
 ${pageContext}
 
-Task:
-Please summarize this page in simple, practical language. Explain:
-
-1. What this page is about
-2. Who it is for
-3. What problem it solves
-4. What TheEduAssist offers here
-5. What next step I should take
-6. What questions I should ask TheEduAssist before buying
-
-Important:
-Do not invent services, prices, results, testimonials, partnerships, awards, or claims that are not visible on the page.`;
+Important: Do not invent services, prices, results, testimonials, partnerships, awards, or claims that are not visible on the page.`;
 }
 
 export async function copyAndOpenAI(actionId: string, platformUrl: string, platformName: string) {
